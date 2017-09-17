@@ -84,36 +84,10 @@ the end of the commit message.
 
 ## Pull Request Review and Merge Automation
 
-Habitat uses several bots to automate the review and merging of pull
-requests. Messages to and from the bots are brokered via the account
-@thesentinels. First, we use Facebook's [mention bot](https://github.com/facebook/mention-bot)
-to identify potential reviewers for a pull request based on the `blame`
-information in the relevant diff. @thesentinels can also receive
-incoming commands from reviewers to approve PRs. These commands are
-routed to a [homu](https://github.com/barosl/homu) bot that will
-automatically merge a PR when sufficient reviewers have provided a +1
-(or r+ in homu terminology).
+Habitat uses a bot to automate merging of pull requests. Messages to and from the bots are brokered via the account @thesentinels which can process incoming commands from reviewers to approve PRs. These commands are routed to a [sentinel](https://github.com/habitat-sh/sentinel) bot that will
+automatically merge a PR when sufficient reviewers have provided a +1 (or @thesentinels `approve` in sentinels terminology).
 
-
-### Delegating pull request merge access
-
-A Habitat core maintainer can delegate pull request merge access to a contributor via
-
-	@thesentinels delegate=username
-
-If you've been given approval to merge, you can do so by appending a comment to the pull request containing the following text:
-
-	@thesentinels r+
-
-Note: **do not** click the Merge Pull Request button if it's enabled.
-
-
-## Running a Builder service cluster locally
-
-A service cluster can be started in your host machine with `make bldr-run`. The public API will be available on port 9636 and the admin API will be available on port 8080. The depot web site will be available on port 3000.
-
-Please refer to the detailed setup instructions in the  [BUILDER_DEV.md](https://github.com/habitat-sh/habitat/blob/master/BUILDER_DEV.md) file for how to bring up a service cluster, as there are currently some manual steps involved.
-
+We use GitHub's integrated [CODEOWNERS](CODEOWNERS) to determine a appropriate reviewer(s).
 
 ### Documentation for Rust Crates
 
