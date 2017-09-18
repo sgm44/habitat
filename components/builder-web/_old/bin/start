@@ -1,0 +1,7 @@
+#!/bin/sh
+set -x
+
+concurrently \
+  "npm run build-css-watch" \
+  "npm run build-js-watch" \
+  "lite-server"

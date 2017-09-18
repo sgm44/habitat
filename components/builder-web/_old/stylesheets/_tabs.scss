@@ -1,0 +1,35 @@
+// Copyright (c) 2016-2017 Chef Software Inc. and/or applicable contributors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+.hab-tabs {
+  background-color: $hab-blue-light;
+  display: block;
+  padding: rem(10) rem(25);
+
+  >li {
+    border-bottom: $small-spacing / 4 solid transparent;
+    cursor: pointer;
+    display: inline;
+    font-family: $heading-font-family;
+    font-size: rem(12);
+    margin-right: rem(30);
+    padding-bottom: rem(12);
+    text-transform: uppercase;
+
+    &.active {
+      border-bottom-color: $hab-green;
+    }
+  }
+
+}

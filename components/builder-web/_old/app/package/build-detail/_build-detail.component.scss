@@ -1,0 +1,129 @@
+.hab-build {
+  position: relative;
+
+  .back {
+    margin-bottom: 20px;
+    color: $medium-gray;
+    font-size: rem(14);
+
+    a {
+      color: $medium-gray;
+    }
+  }
+
+  @each $status, $color in $status-colors {
+    .#{$status} {
+      color: #{$color};
+    }
+  }
+
+  .summary {
+    @include row;
+    border: 1px solid $very-light-gray;
+    border-radius: 7px;
+    padding: 14px;
+    font-size: rem(12);
+    color: $dark-gray;
+    margin-bottom: 20px;
+
+    .status {
+      @include span-columns(6);
+      position: relative;
+      font-size: rem(14);
+
+      strong {
+        padding-left: 26px;
+      }
+
+      hab-icon {
+        width: 1.5em;
+        position: absolute;
+
+        &.dispatched, &.processing {
+          @extend hab-icon.spinning;
+        }
+      }
+    }
+
+    .detail {
+      @include span-columns(6);
+
+      .item {
+
+        .label {
+          @include span-columns(1 of 6);
+          font-weight: 600;
+        }
+
+        .data {
+          @include span-columns(5 of 6);
+        }
+      }
+    }
+  }
+
+  .controls {
+    padding: 4px;
+    background: $hab-white;
+    border-radius: $global-radius;
+    box-shadow: 0 1px 14px 0 $hab-gray-dark;
+
+    button {
+      display: block;
+      background: $dark-blue;
+      font-size: rem(12);
+      text-transform: none;
+      text-align: left;
+      width: 100%;
+      padding: 2px 8px;
+      outline: none;
+      border: none;
+      color: $hab-white;
+      font-family: $base-font-family;
+      cursor: pointer;
+
+      &:first-child {
+        border-radius: 4px 4px 0 0;
+      }
+
+      &:last-child {
+        margin-top: 1px;
+        border-radius: 0 0 4px 4px;
+      }
+
+      &:hover {
+        background-color: $hab-green-dark;
+      }
+
+      &.active {
+        background-color: $hab-green;
+      }
+
+      hab-icon {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .output-container {
+    padding-left: 6px;
+    border-left: 2px solid transparent;
+    border-radius: 2px;
+
+    @each $status, $color in $status-colors {
+      &.#{$status} {
+        border-color: #{$color};
+      }
+    }
+  }
+
+  .output {
+    font-family: $monospace-font-family;
+    font-size: $monospace-font-size;
+    @include pad($base-spacing);
+    background: $dark-blue;
+    border-radius: $global-radius;
+    color: $medium-gray;
+    overflow: auto;
+  }
+}

@@ -1,0 +1,131 @@
+// Copyright (c) 2016-2017 Chef Software Inc. and/or applicable contributors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+fieldset {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-weight: 600;
+  margin-bottom: $small-spacing / 2;
+  padding: 0;
+}
+
+label {
+  color: $hab-gray-dark;
+  font-size: rem(14);
+  display: block;
+  margin-bottom: $small-spacing / 2;
+  text-transform: uppercase;
+}
+
+form {
+  small {
+    color: $hab-gray;
+    display: block;
+    margin-bottom: $small-spacing / 2;
+    margin-top: -($small-spacing / 2);
+  }
+
+  button {
+    margin-top: rem(20);
+  }
+  .hint, .error {
+    font-size: rem(12px);
+  }
+  .error {
+    color: $hab-red;
+  }
+}
+
+input,
+select {
+  display: block;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+}
+
+#{$all-text-inputs},
+select,
+select[multiple] {
+  background-color: $base-background-color;
+  border: $base-border;
+  border-radius: $base-border-radius;
+  box-sizing: border-box;
+  font-family: $base-font-family;
+  font-size: rem(14);
+  margin-bottom: $base-spacing;
+  padding: $base-spacing / 3;
+  transition: border-color $base-duration $base-timing;
+  width: 100%;
+
+  &:hover {
+    border-color: shade($base-border-color, 20%);
+  }
+
+  &:focus {
+    border-color: $action-color;
+    box-shadow: $form-box-shadow-focus;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: shade($base-background-color, 5%);
+    cursor: not-allowed;
+
+    &:hover {
+      border: $base-border;
+    }
+  }
+
+  &.ng-invalid:focus {
+    border-color: $failure-color;
+    box-shadow: $form-box-shadow-focus-failure;
+  }
+
+  &.ng-valid:focus {
+    border-color: $success-color;
+    border-color: $form-box-shadow-focus-success;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+[type="search"] {
+  appearance: none;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  display: inline;
+  margin-right: $small-spacing / 2;
+}
+
+[type="file"] {
+  margin-bottom: $small-spacing;
+  width: 100%;
+}
+
+select {
+  background: $base-background-color url("/assets/images/icons/drop-down.svg") no-repeat right 15px center;
+  margin-bottom: $base-spacing;
+  max-width: 100%;
+  -webkit-appearance: none;
+  width: auto;
+}
