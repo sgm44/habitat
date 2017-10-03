@@ -27,6 +27,8 @@ import * as featureFlagActions from "./feature-flags";
 // Action types
 export const LOAD_SESSION_STATE = gitHubActions.LOAD_SESSION_STATE;
 export const POPULATE_GITHUB_FILES = gitHubActions.POPULATE_GITHUB_FILES;
+export const POPULATE_GITHUB_INSTALLATIONS = gitHubActions.POPULATE_GITHUB_INSTALLATIONS;
+export const POPULATE_GITHUB_INSTALLATION_REPOSITORIES = gitHubActions.POPULATE_GITHUB_INSTALLATION_REPOSITORIES;
 export const POPULATE_GITHUB_ORGS = gitHubActions.POPULATE_GITHUB_ORGS;
 export const POPULATE_GITHUB_REPOS = gitHubActions.POPULATE_GITHUB_REPOS;
 export const POPULATE_GITHUB_USER_DATA = gitHubActions.POPULATE_GITHUB_USER_DATA;
@@ -116,6 +118,8 @@ export const RESET = "RESET";
 // Actions
 export const authenticateWithGitHub = gitHubActions.authenticateWithGitHub;
 export const fetchGitHubFiles = gitHubActions.fetchGitHubFiles;
+export const fetchGitHubInstallations = gitHubActions.fetchGitHubInstallations;
+export const fetchGitHubInstallationRepositories = gitHubActions.fetchGitHubInstallationRepositories;
 export const clearGitHubRepos = gitHubActions.clearGitHubRepos;
 export const fetchGitHubOrgs = gitHubActions.fetchGitHubOrgs;
 export const fetchGitHubRepos = gitHubActions.fetchGitHubRepos;

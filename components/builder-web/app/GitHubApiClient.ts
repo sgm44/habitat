@@ -110,4 +110,52 @@ export class GitHubApiClient {
             }).catch(error => reject(error));
         });
     }
+
+    public getUserInstallations() {
+        return new Promise((resolve, reject) => {
+            fetch(`${config["github_api_url"]}/user/installations?access_token=${this.token}`, {
+                method: "GET",
+                headers: {
+                    "Accept": [
+                        "application/vnd.github.v3+json",
+                        "application/vnd.github.machine-man-preview+json"
+                    ]
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    resolve(response.json());
+                } else {
+                    reject(new Error(response.statusText));
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+        });
+    }
+
+    public getUserInstallationRepositories(installationId: string) {
+        return new Promise((resolve, reject) => {
+            fetch(`${config["github_api_url"]}/user/installations/${installationId}/repositories?access_token=${this.token}`, {
+                method: "GET",
+                headers: {
+                    "Accept": [
+                        "application/vnd.github.v3+json",
+                        "application/vnd.github.machine-man-preview+json"
+                    ]
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    resolve(response.json());
+                } else {
+                    reject(new Error(response.statusText));
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+        });
+    }
 }

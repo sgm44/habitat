@@ -1,24 +1,26 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { MdDialog, MdDialogRef } from "@angular/material";
 import { DisconnectConfirmDialog } from "./dialog/disconnect-confirm/disconnect-confirm.dialog";
 import { Subscription } from "rxjs/subscription";
 import { DockerExportSettingsComponent } from "../../shared/docker-export-settings/docker-export-settings.component";
+import { BuilderApiClient } from "../../BuilderApiClient";
 import { GitHubApiClient } from "../../GitHubApiClient";
 import { GitHubRepo } from "../../github/repo/shared/github-repo.model";
 import { requireSignIn } from "../../util";
 import { AppStore } from "../../AppStore";
 import { addNotification, addProject, updateProject, setProjectIntegrationSettings, deleteProject, fetchGitHubFiles, fetchGitHubOrgs,
-         fetchGitHubRepos, fetchProject, clearGitHubRepos } from "../../actions/index";
+         fetchGitHubRepos, fetchGitHubInstallations, fetchGitHubInstallationRepositories, fetchProject, clearGitHubRepos } from "../../actions/index";
 import config from "../../config";
 
 @Component({
     selector: "hab-project-settings",
     template: require("./project-settings.component.html")
 })
-export class ProjectSettingsComponent {
+export class ProjectSettingsComponent implements OnInit {
     connecting: boolean = false;
     filter: GitHubRepo = new GitHubRepo();
+    selectedInstallation: any;
     selectedOrg: string;
     selectedRepo: string;
     selectedPath: string;
@@ -38,6 +40,11 @@ export class ProjectSettingsComponent {
 
     constructor(private store: AppStore, private disconnectDialog: MdDialog) {}
 
+    ngOnInit() {
+        this.store.dispatch(fetchGitHubInstallations());
+        // this.store.dispatch(fetchGitHubInstallationRepositories());
+    }
+
     get config() {
         return config;
     }
@@ -48,6 +55,10 @@ export class ProjectSettingsComponent {
 
     get files() {
         return this.store.getState().gitHub.files;
+    }
+
+    get installations() {
+        return this.store.getState().gitHub.installations;
     }
 
     get orgs() {
@@ -66,7 +77,8 @@ export class ProjectSettingsComponent {
     }
 
     get repos() {
-        return this.store.getState().gitHub.repos;
+        // return this.store.getState().gitHub.repos;
+        return this.store.getState().gitHub.installationRepositories;
     }
 
     get token() {
@@ -199,14 +211,20 @@ export class ProjectSettingsComponent {
             });
     }
 
+    selectInstallation(installation) {
+        this.selectedInstallation = installation;
+        this.store.dispatch(fetchGitHubInstallationRepositories(installation.get("id")));
+    }
+
     selectOrg(org) {
         this.selectedOrg = org;
         this.store.dispatch(fetchGitHubRepos(org, 1, undefined));
     }
 
     selectRepo(repo) {
+        debugger;
         this.selectedRepo = repo;
-        this.store.dispatch(fetchGitHubFiles(this.selectedOrg, this.selectedRepo, "plan."));
+        this.store.dispatch(fetchGitHubFiles(this.selectedInstallation.get("id"), repo.getIn(["owner", "login"]), repo.get("name"), "plan."));
         window.scrollTo(0, 0);
     }
 

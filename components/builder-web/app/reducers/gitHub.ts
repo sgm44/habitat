@@ -18,16 +18,24 @@ import initialState from "../initialState";
 
 export default function gitHub(state = initialState["gitHub"], action) {
     switch (action.type) {
+
         case actionTypes.LOAD_SESSION_STATE:
             return state.set("authState", action.payload.gitHubAuthState).
                 set("authToken", action.payload.gitHubAuthToken);
 
+        case actionTypes.POPULATE_GITHUB_INSTALLATIONS:
+            return state.set("installations", fromJS(action.payload.installations));
+
+        case actionTypes.POPULATE_GITHUB_INSTALLATION_REPOSITORIES:
+            return state.set("installationRepositories", fromJS(action.payload.repositories));
+
         case actionTypes.POPULATE_GITHUB_ORGS:
-            return state.set("orgs",
-                state.get("orgs").concat(fromJS(action.payload)).
-                    sortBy(org => org.get("login")
-                )
-            );
+            // return state.set("orgs",
+            //     state.get("orgs").concat(fromJS(action.payload)).
+            //         sortBy(org => org.get("login")
+            //     )
+            // );
+            return state;
 
         case actionTypes.POPULATE_GITHUB_REPOS:
             return state.set("repos",

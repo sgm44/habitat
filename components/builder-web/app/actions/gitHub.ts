@@ -20,6 +20,7 @@ import { setFeatureFlags } from "./index";
 import { attemptSignIn, addNotification, goHome, fetchMyOrigins, requestRoute, setFeatureFlag,
     signOut, setSigningInFlag } from "./index";
 import { DANGER, WARNING } from "./notifications";
+import { BuilderApiClient } from "../BuilderApiClient";
 import { GitHubApiClient } from "../GitHubApiClient";
 
 const parseLinkHeader = require("parse-link-header");
@@ -28,6 +29,8 @@ const gitHubTokenAuthUrl = `${config["habitat_api_url"]}/v1/authenticate`;
 
 export const LOAD_SESSION_STATE = "LOAD_SESSION_STATE";
 export const POPULATE_GITHUB_FILES = "POPULATE_GITHUB_FILES";
+export const POPULATE_GITHUB_INSTALLATIONS = "POPULATE_GITHUB_INSTALLATIONS";
+export const POPULATE_GITHUB_INSTALLATION_REPOSITORIES = "POPULATE_GITHUB_INSTALLATION_REPOSITORIES";
 export const POPULATE_GITHUB_ORGS = "POPULATE_GITHUB_ORGS";
 export const POPULATE_GITHUB_REPOS = "POPULATE_GITHUB_REPOS";
 export const POPULATE_GITHUB_USER_DATA = "POPULATE_GITHUB_USER_DATA";
@@ -77,13 +80,13 @@ export function authenticateWithGitHub(token = undefined) {
     };
 }
 
-export function fetchGitHubFiles(owner: string, repo: string, filename: string) {
+export function fetchGitHubFiles(installationId: string, owner: string, repo: string, filename: string) {
     const token = cookies.get("gitHubAuthToken");
 
     return dispatch => {
-        const client = new GitHubApiClient(token);
+        const client = new BuilderApiClient(token);
 
-        client.findFileInRepo(owner, repo, filename)
+        client.findFileInRepo(installationId, owner, repo, filename)
             .then((results) => {
                 dispatch(populateGitHubFiles(results));
             });
@@ -138,6 +141,36 @@ export function fetchGitHubOrgs(page = 1) {
     };
 };
 
+export function fetchGitHubInstallations() {
+    const token = cookies.get("gitHubAuthToken");
+
+    return dispatch => {
+        const client = new GitHubApiClient(token);
+
+        client.getUserInstallations()
+            .then((results) => {
+                dispatch(populateGitHubInstallations(results));
+            })
+            .catch((error) => {
+                debugger;
+            });
+    };
+};
+
+
+export function fetchGitHubInstallationRepositories(installationId: string) {
+    const token = cookies.get("gitHubAuthToken");
+
+    return dispatch => {
+        const client = new GitHubApiClient(token);
+
+        client.getUserInstallationRepositories(installationId)
+            .then((results) => {
+                dispatch(populateGitHubInstallationRepositories(results));
+            });
+    };
+};
+
 export function loadSessionState() {
     return {
         type: LOAD_SESSION_STATE,
@@ -159,6 +192,20 @@ export function onGitHubOrgSelect(org, username) {
     return dispatch => {
         dispatch(setSelectedGitHubOrg(org));
         dispatch(fetchGitHubRepos(org, 1, username));
+    };
+}
+
+function populateGitHubInstallations(payload) {
+    return {
+        type: POPULATE_GITHUB_INSTALLATIONS,
+        payload,
+    };
+}
+
+function populateGitHubInstallationRepositories(payload) {
+    return {
+        type: POPULATE_GITHUB_INSTALLATION_REPOSITORIES,
+        payload,
     };
 }
 
