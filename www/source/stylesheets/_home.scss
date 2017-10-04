@@ -15,6 +15,10 @@ body.home {
   p {
     font-size: rem-calc(18);
   }
+  
+  .home--hero-carousel-slide-main p {
+    font-size: rem-calc(14);
+  }
 }
 .home > #main-footer {
   margin-top: rem-calc(-50);
