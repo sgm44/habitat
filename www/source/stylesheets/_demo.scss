@@ -5,7 +5,9 @@
 }
 
 #demo-footer.home--section-demo-cta {
+  position: absolute;
   width: 100%;
+  bottom: 0;
   padding: 0px;
 }
 
@@ -73,7 +75,7 @@
     padding: 20px 0px 0px;
     > a > h1 {
       height: 100px;
-    }    
+    }
   }
 }
 
