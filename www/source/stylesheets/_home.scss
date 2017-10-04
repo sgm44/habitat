@@ -62,7 +62,7 @@ body.home {
 
 .home--hero--heading {
   margin: 0 auto rem-calc(30);
-  // font-size: rem-calc(20);
+  font-size: rem-calc(20);
 
   @include breakpoint(medium) {
     margin-bottom: rem-calc(40);
