@@ -7,13 +7,10 @@
   h1 {
     font-size: rem-calc(24);
   }
-}
 
-#demo-footer.home--section-demo-cta {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  padding: 0px;
+  p {
+    line-height: rem-calc(24);
+  }
 }
 
 // demo index
@@ -165,9 +162,6 @@ a.previous-step-link {
     color: $hab-orange;
     &.previous-step-link { color: $hab-white; }
   }
-  .social-icon {
-
-  }
 
   #demo-footer {
     display: none;
@@ -181,6 +175,17 @@ a.previous-step-link {
   .home--section-demo-cta {
     margin-top: rem-calc(60);
     padding-top: rem-calc(20);
+  }
+}
+
+.demo-summary--item {
+  h4 {
+    margin-bottom: rem-calc(0);
+  }
+
+  .social-icon {
+    display: inline-block;
+    margin: rem-calc(10) 0 rem-calc(30);
   }
 }
 

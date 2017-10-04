@@ -41,8 +41,9 @@ $tech-icon-height: 40px;
 }
 
 .link-external {
-  background: url('/images/icons/open-in-new.svg') right center no-repeat;
-  padding-right: 30px;
+  background: url('/images/icons/open-in-new.svg') right bottom no-repeat;
+  background-size: 20px;
+  padding-right: 22px;
 }
 
 //OOCSS
