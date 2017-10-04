@@ -11,6 +11,10 @@ body.home {
   .home--section:last-child {
     padding-bottom: rem-calc(150);
   }
+
+  p {
+    font-size: rem-calc(18);
+  }
 }
 .home > #main-footer {
   margin-top: rem-calc(-50);
@@ -58,11 +62,11 @@ body.home {
 
 .home--hero--heading {
   margin: 0 auto rem-calc(30);
-  // font-size: rem-calc(20);
+  font-size: rem-calc(20);
 
   @include breakpoint(medium) {
     margin-bottom: rem-calc(40);
-    // font-size: rem-calc(30);
+    font-size: rem-calc(36);
   }
 }
 
@@ -75,11 +79,15 @@ body.home {
 
 .home--button-wrap {
   margin-top: rem-calc(30);
-  margin-bottom: rem-calc(50);
+  margin-bottom: rem-calc(70);
   text-align: center;
 
   &.hero {
     margin-top: 10px;
+
+    .button {
+      min-width: rem-calc(160);
+    }
 
     @include breakpoint(small only) {
       margin: 0 auto rem-calc(40);
@@ -94,7 +102,7 @@ body.home {
 
   & > .button.cta {
     @include primary-button;
-    margin-right: 1rem;
+    margin-right: rem-calc(30);
     margin-bottom: 0px;
   }
 
@@ -116,6 +124,11 @@ body.home {
   position: relative;
   margin-bottom: 150px;
   color: white;
+
+  h4 {
+    margin-bottom: rem-calc(24);
+    font-size: rem-calc(20);
+  }
 }
 
 .home--hero-carousel-slide {
@@ -195,6 +208,10 @@ $home--hero-carousel-nav-border-height: 10px;
   background: $hab-navy;
   border-radius: 0px $global-radius 0px 0px;
   padding: 64px 50px 20px 30px;
+
+  p {
+    margin-bottom: rem-calc(30);
+  }
 }
 
 .window-buttons {
@@ -228,6 +245,7 @@ $home--hero-carousel-nav-border-height: 10px;
   }
   > .home--callout-header {
     margin: rem-calc(30) 0px;
+    font-size: rem-calc(24);
   }
 }
 
@@ -235,6 +253,11 @@ $home--hero-carousel-nav-border-height: 10px;
 // Testimonial carousel
 .home--testimonial-carousel {
   margin-bottom: rem-calc(100);
+
+  h2 {
+    margin-bottom: rem-calc(70);
+    font-size: rem-calc(36);
+  }
 }
 .home--testimonial-carousel-nav {
   list-style: none;
