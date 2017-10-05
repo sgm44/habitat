@@ -2,6 +2,8 @@
 
 .demo--page {
   color: $hab-white;
+  position: relative;
+  z-index: 100;
 
   // Demo typography
   h1 {
@@ -168,6 +170,14 @@ a.previous-step-link {
 
 .demo-step--screen-2 {
   max-width: 300px;
+}
+
+// demo footer - override global footer settings
+.home--section-demo-cta.in-demo {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 // summary
