@@ -16,40 +16,35 @@ classes: demo_step
         a.demo-step--indicator href="/demo/steps/7"
         a.demo-step--indicator href="/demo/steps/8"
         a.demo-step--indicator href="/demo/steps/9"
+        a.demo-step--indicator href="/demo/steps/10"
       .row
         .columns.large-12
-          h1.h4="Step 6: Set Up Automated Package Builds"
+          h1.h4="Step 6: Add Docker Hub Integration"
         .columns.large-6
-          p Automate Habitat Builder to rebuild your application as you commit new code or underlying dependent packages have updates.
           p
-            ' Navigate to the
-            strong Packages
-            '  tab and click the
-            strong Connect a plan
-            '  button.
-          p Select the GitHub org and repo where you forked the sample app. You will see the sample plan file listed (see image).
-          p
-            ' Switch the
-            em Publish to Docker Hub
-            '  option to
-            strong ON
-            '  - the Docker Hub account you added in the previous step should appear and be selected.
-          p
-            ' Finally, select a target Docker Hub repo 
-            span.asterisk.sup="*"
-            '  from the dropdown. You can leave the
-            em Docker Tag 
-            ' as default and click
-            strong Save connection
+            ' Connecting your Docker Hub account will allow Habitat Builder to publish the sample app package as a Docker container
+            span.asterisk="*"
             ' .
-          .footnote
+          p
+            ' Go to the
+            strong Integrations
+            '  tab for your
+            a.link-external href="https://bldr.habitat.sh/#/origins" target="_blank" new origin
+            ' , then click on the
+            strong Add Docker Hub account*
+            '  button. Enter your Docker Hub username and password, then save this account.
+          .footnote.habicat-with-linux
+            p
+              span.asterisk="*"
+              '  Habitat Builder currently publishes only Linux-based containers. You can still complete this demo even if your system cannot run a Linux container, but you will not be able to run the app locally.
             p.mb-0
               span.asterisk="*"
-              '  If the repo dropdown list is empty, log in to your
-              a.link-external href="https://hub.docker.com/" target="_blank" Docker Hub
-              '  account and create a repository.
+              '  Don't have a Docker Hub account?
+              a.link-external href="https://hub.docker.com" target="blank" Create one
+              '  , it's free.
         .columns.large-6
-          img src="/images/demo/screen-step-6.png"
+          p You should see your new account added, as in the image below:
+          img src="/images/demo/screen-add-docker-hub-integration.png"
       .row.mt-1.step-bottom-nav
         .columns.large-6
           a.previous-step-link href="/demo/steps/5" Previous Step

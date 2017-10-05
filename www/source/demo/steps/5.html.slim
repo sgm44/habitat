@@ -16,29 +16,30 @@ classes: demo_step
         a.demo-step--indicator href="/demo/steps/7"
         a.demo-step--indicator href="/demo/steps/8"
         a.demo-step--indicator href="/demo/steps/9"
+        a.demo-step--indicator href="/demo/steps/10"
       .row
         .columns.large-12
-          h1.h4="Step 5: Add Docker Hub Integration"
+          h1.h4="Step 5: Activate Habitat Builder"
         .columns.large-6
           p
-            ' Connecting your Docker Hub account will allow Habitat Builder to publish the sample app package as a Docker container
+            ' By installing the Habitat Builder GitHub App
             span.asterisk="*"
+            ' , you will get automated builds any time a repo change is detected.
+          p
+            ' Simply
+            strong install
+            '  the app using this link
+            a.link-external href="https://github.com/apps/habitat-builder" target="_blank" https://github.com/apps/habitat-builder
             ' .
           p
-            ' Go to the
-            strong Integrations
-            '  tab for your
-            a.link-external href="https://bldr.habitat.sh/#/origins" target="_blanl" new origin
-            ' , then click on the
-            strong Add Docker Hub account
-            '  button. Enter your Docker Hub username and password, then save this account.
-          .footnote.habicat-with-linux
-            p.mb-0
-              span.asterisk="*"
-              '  Habitat Builder currently publishes only Linux-based containers. You can still complete this demo even if your system cannot run a Linux container, but you will not be able to run the app locally.
+            ' You can either install it on your personal GitHub account or any organization for which you are the owner.
+          p
+            '  We recommend installing it on
+            strong all repositories
+            '  , or you can select your sample-node-app repository.
+
         .columns.large-6
-          p You should see your new account added, as in the image below:
-          img src="/images/demo/screen-step-5.png"
+          img src="/images/demo/screen-install-github-app.png"
       .row.mt-1.step-bottom-nav
         .columns.large-6
           a.previous-step-link href="/demo/steps/4" Previous Step

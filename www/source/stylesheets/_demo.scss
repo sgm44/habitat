@@ -10,6 +10,12 @@
 
   p {
     line-height: rem-calc(24);
+
+    &.code {
+      padding: rem-calc(8) rem-calc(15);
+      border-radius: $global-radius;
+      font-size: rem-calc(14);
+    }
   }
 }
 
@@ -29,7 +35,7 @@
     top: rem-calc(-100);
     height: rem-calc(250);
     width: 100%;
-    background: url('/images/demo/index-snorkelling-habicat.png') center center no-repeat transparent;
+    background: url('/images/demo/index-snorkelling-habicat.svg') center center no-repeat transparent;
     background-size: contain;
   }
 }
@@ -53,19 +59,19 @@
   &.demo--callout-build:after {
     height: rem-calc(95);
     width: rem-calc(163);
-    background: url('/images/demo/index-callout-build.png') center center no-repeat;
+    background: url('/images/demo/index-callout-build.svg') center center no-repeat;
     background-size: contain;
   }
   &.demo--callout-publish:after {
     height: rem-calc(91);
     width: rem-calc(50);
-    background: url('/images/demo/index-callout-publish.png') center center no-repeat;
+    background: url('/images/demo/index-callout-publish.svg') center center no-repeat;
     background-size: contain;
   }
   &.demo--callout-trigger:after {
     height: rem-calc(77);
     width: rem-calc(155);
-    background: url('/images/demo/index-callout-trigger.png') center center no-repeat;
+    background: url('/images/demo/index-callout-trigger.svg') center center no-repeat;
     background-size: contain;
   }
 }
@@ -88,7 +94,7 @@
   left: 0px;
 }
 
-$demo-step-count: 9;
+$demo-step-count: 10;
 .demo-step--indicator {
   height: 5px;
   width: 100% / $demo-step-count;
@@ -111,17 +117,23 @@ $demo-step-count: 9;
   position: relative;
   color: $hab-blue-grey;
   background: $hab-white;
-  padding: rem-calc(58) rem-calc(40);
+  padding: rem-calc(58) rem-calc(40) rem-calc(40);
+  border-radius: 0 0 $global-radius $global-radius;
 
   a {
     color: $hab-orange;
   }
 
   .footnote {
+    margin-top: rem-calc(40);
     background: $hab-gray-light;
     border-radius: $global-radius;
     padding: rem-calc(20);
     position: relative;
+
+    p {
+      font-size: rem-calc(14);
+    }
 
     &.habicat-with-linux:after {
       content: '';
@@ -129,9 +141,9 @@ $demo-step-count: 9;
       width: 127px;
       height: 104px;
       position: absolute;
-      bottom: -60px;
-      right: rem-calc(20);
-      background: url('/images/demo/habicat-and-tux.png') center center no-repeat;
+      bottom: -12px;
+      right: -18px;
+      background: url('/images/demo/habicat-and-tux.svg') center center no-repeat;
       background-size: contain;
 
       @include breakpoint(large) { display: block; }
@@ -148,8 +160,10 @@ a.previous-step-link {
   padding-left: 1.875rem !important;
   background: url(../images/icons/icon-chevron-back-orange.png) no-repeat;
   background-size: 6px 12px;
-  background-position: 15px 50%;
+  background-position: 15px 75%;
   color: $hab-blue-grey;
+  font-size: rem-calc(14);
+  line-height: rem-calc(20);
 }
 
 .demo-step--screen-2 {
